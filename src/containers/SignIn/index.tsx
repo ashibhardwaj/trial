@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import { authContext } from "../../contexts/AuthContext";
 /** Presentation/UI */
 import { AuthPageWrapper, SignUpWrapper } from "../../components/Layouts";
-import SignInForm from "./SignInForm";
+import SignUpForm from "./SignInForm";
 const SignIn: React.FC<{}> = () => {
   const { auth } = React.useContext(authContext);
 if (auth.authenticated) {
@@ -13,7 +13,7 @@ if (auth.authenticated) {
 return (
     <AuthPageWrapper>
       <SignUpWrapper>
-        <SignInForm />
+        <SignUpForm />
       </SignUpWrapper>
     </AuthPageWrapper>
   );

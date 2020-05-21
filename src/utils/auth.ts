@@ -31,6 +31,8 @@ export const signUp = (
   setTimestamp: React.Dispatch<React.SetStateAction<number>>,
   openConfirmationCodeModal: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+  console.log(email);
+  console.log(password);
   setLoading(true);
   const userTimestamp = moment().unix();
   const stringUserTimestamp = userTimestamp.toString();
@@ -42,18 +44,14 @@ const attributesToBeAdded = [
     {
       Name: "email",
       Value: user.email,
-    },
-    {
-      Name: "custom:timestamp",
-      Value: stringUserTimestamp,
-    },
+    }
   ];
 const attrList: Array<CognitoUserAttribute> = attributesToBeAdded.map(
     attr => {
       return new CognitoUserAttribute(attr);
     }
   );
-userPool.signUp(user.email, user.password, attrList, [], (err, result) => {
+userPool.signUp(email , password, attrList, [], (err, result) => {
     if (err) {
       setLoading(false);
       setError(err.message);
